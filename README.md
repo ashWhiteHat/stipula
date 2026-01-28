@@ -13,11 +13,12 @@ We have committed to the ANTLR tool.
 ### Dependencies
 
 * The prototype requires a Java version > 8.
+* Maven 3.x (for the standard project layout).
 
 ### Installation
 
 There are two possibilities:
-* It is possible to install the source code (folder Stipula-LAN) with the Grammar and the parser 
+* It is possible to install the source code with the grammar and generate the parser
 * It is possible to download and run the jar of the prototype
 
 
@@ -29,9 +30,16 @@ There are two possibilities:
 
 ##### Instructions:
 * Download the zip
-* Import the grammar file (Stipula.g4) in the IDE
-* Compile with ANTLR and generate the Parser, Visitor, Listener
-* Import the rest of the project (package src)
+* Build with Maven (this generates the parser, visitor, and listener from the grammar)
+* The project uses the standard Maven layout:
+  * `src/main/java` for sources
+  * `src/main/resources` for resources
+  * `src/main/antlr4` for the grammar
+
+To build:
+```
+mvn -q clean package
+```
 
 #### How to run the jar
 
@@ -39,6 +47,10 @@ There are two possibilities:
 * To run the prototype type the following code
 ```
 java -jar Stipula-LAN.jar name_of_the_example.stipula
+```
+* If you build with Maven, the jar is created in `target/`:
+```
+java -jar target/stipula-0.1.0-SNAPSHOT.jar name_of_the_example.stipula
 ```
  
 ### Execution
