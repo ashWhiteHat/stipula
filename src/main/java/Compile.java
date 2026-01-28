@@ -1,6 +1,7 @@
 import ast.*;
 import lib.Pair;
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import parser.StipulaLexer;
@@ -16,7 +17,7 @@ public class Compile {
 
 		String fileName = args[0];
 		FileInputStream is = new FileInputStream(fileName);
-		ANTLRInputStream input = new ANTLRInputStream(is);
+		CharStream input = CharStreams.fromStream(is);
 		StipulaLexer lexer = new StipulaLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		StipulaParser parser = new StipulaParser(tokens);

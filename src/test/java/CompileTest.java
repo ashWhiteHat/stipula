@@ -1,24 +1,10 @@
 import java.io.FileInputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.Map.Entry;
-import java.util.Stack;
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import ast.*;
 import lib.Pair;
@@ -27,10 +13,9 @@ import parser.*;
 public class CompileTest {
 
 	public static void main(String[] args) throws Exception {
-
 		String fileName = "deposit.stipula";// args[0];
 		FileInputStream is = new FileInputStream(fileName);
-		ANTLRInputStream input = new ANTLRInputStream(is);
+		CharStream input = CharStreams.fromStream(is);
 		StipulaLexer lexer = new StipulaLexer(input);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		StipulaParser parser = new StipulaParser(tokens);
@@ -55,7 +40,6 @@ public class CompileTest {
 			Interpreter codeInterpreter = new Interpreter();
 			Object program = codeInterpreter.visit(t);
 			((Program) program).runProgram(typeinferencer);
-
 		}
 	}
 }

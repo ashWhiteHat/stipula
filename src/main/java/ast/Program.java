@@ -78,6 +78,7 @@ public class Program {
 	public ArrayList<Contract> getContracts() {
 		return contracts;
 	}
+
 	public Contract getContract(int index) {
 		for (int i = 0; i < contracts.size(); i++) {
 			if (i == index) {
@@ -218,7 +219,6 @@ public class Program {
 		if (fields == null)
 			return;
 		for (Field f : fields) {
-
 			System.out.print("\t");
 			f.printField();
 		}
@@ -263,7 +263,6 @@ public class Program {
 		}
 		timer.add(new Timer());
 		timer.get(index).schedule(new DelayEvent(event, ti), seconds * 1000);
-
 	}
 
 	void udpateRunningState(String s) {
@@ -291,11 +290,9 @@ public class Program {
 		public String getInput() {
 			return this.inputString;
 		}
-
 	}
 
 	class DelayEvent extends TimerTask {
-
 		ArrayList<Pair<Expression, ArrayList<Statement>>> toExecute = null;
 		String initStateEvent = null;
 		String endStateEvent = null;
@@ -446,7 +443,6 @@ public class Program {
 			}
 			switch (caseExec) {
 				case 0 : // first execution
-
 					System.out.println("############");
 					if (this.getFields() != null) {
 						System.out.println("Initialized fields:");
@@ -792,7 +788,6 @@ public class Program {
 					found = false;
 					caseExec = 1;
 					break;
-
 			}
 		}
 		System.out.println("############");

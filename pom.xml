@@ -36,26 +36,7 @@
             <configuration>
               <visitor>true</visitor>
               <listener>true</listener>
-              <outputDirectory>${project.basedir}/src/main/generated/parser</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.5.0</version>
-        <executions>
-          <execution>
-            <id>add-generated-sources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.basedir}/src/main/generated</source>
-              </sources>
+              <outputDirectory>${project.basedir}/src/main/java/parser</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -89,6 +70,9 @@
                       <include>src/main/java/**/*.java</include>
                       <include>src/test/java/**/*.java</include>
                   </includes>
+                  <excludes>
+                      <exclude>src/main/java/parser/**</exclude>
+                  </excludes>
               </java>
           </configuration>
           <executions>
